@@ -8,9 +8,9 @@ Install HTTPIE
  - https://httpie.io/docs/cli/installation
 
 
-Some examples: 
+Some examples for using HTTPIE: 
 
-cyft@NO00445389:~/projects/Rocketseat/fundamentos-nodejs$ http GET localhost:3333/users
+~/projects/Rocketseat/fundamentos-nodejs$ http GET localhost:3333/users
 HTTP/1.1 200 OK
 Connection: keep-alive
 Content-Length: 13
@@ -19,3 +19,12 @@ Keep-Alive: timeout=5
 
 List of users
 
+
+projects/Rocketseat/fundamentos-nodejs$ http POST localhost:3333/users
+HTTP/1.1 201 Created
+Connection: keep-alive
+Date: Fri, 27 Jun 2025 19:01:32 GMT
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+User created successfully
