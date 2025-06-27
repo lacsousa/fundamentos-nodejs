@@ -13,6 +13,21 @@ import http from "node:http";
 // PATCH -> Partial update data in backend
 // DELETE -> Delete data in backend
 
+
+//JSON - Javascript Object Notation
+// JSON is a format for data exchange between frontend and backend
+
+//Headers are metadata about the request or response
+
+/*
+Informational responses (100 – 199)
+Successful responses (200 – 299)
+Redirection messages (300 – 399)
+Client error responses (400 – 499)
+Server error responses (500 – 599)
+*/
+const users = [];
+
 const server = http.createServer((req, res) => {
   
   const { method, url } = req;
@@ -21,11 +36,19 @@ const server = http.createServer((req, res) => {
 
   if (method === "GET" && url === "/users") {
     // Early return to avoid unnecessary processing
-    return res.end("List of users");
+    return res
+    .setHeader("Content-Type", "application/json")
+    .end(JSON.stringify(users));
+   
   }
 
   if (method === "POST" && url === "/users") {
-    return res.end("Create user");
+    users.push({ id: 1, 
+      name: 'John Doe',
+      email: 'johndoe@gmail.com'
+    });
+
+    return res.writeHead(201).end("User created successfully");
   }
 
   if (method === "PUT" && url === "/users/1") {
@@ -40,7 +63,7 @@ const server = http.createServer((req, res) => {
     return res.end("Delete user 1");
   }
 
-  return res.end("Hello Luciano Cordeiro!");
+  return res.writeHead(404).end("Not Found");
 });
 
 server.listen(3333);
