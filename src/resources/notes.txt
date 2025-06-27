@@ -1,0 +1,21 @@
+Install NodeJS
+
+    - https://efficient-sloth-d85.notion.site/Instalando-o-Node-e-o-NPM-d162e2582d5c48499bc6703526912456
+
+
+Install HTTPIE
+
+ - https://httpie.io/docs/cli/installation
+
+
+Some examples: 
+
+cyft@NO00445389:~/projects/Rocketseat/fundamentos-nodejs$ http GET localhost:3333/users
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Length: 13
+Date: Thu, 26 Jun 2025 12:17:27 GMT
+Keep-Alive: timeout=5
+
+List of users
+
