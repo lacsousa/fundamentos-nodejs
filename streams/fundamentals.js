@@ -3,7 +3,7 @@
 //process.stdin
 //  .pipe(process.stdout);
 
-import { Readable, Writable } from "stream";
+import { Readable, Writable, Transform } from 'node:stream';
 
 class OneToHundred extends Readable {
   index = 1;
@@ -23,4 +23,24 @@ class OneToHundred extends Readable {
   }
 }
 
-new OneToHundred().pipe(process.stdout); // Pipe the readable stream to standard output
+class MultiplyByTenStream extends Writable {
+  _write(chunk, encoding, callback) {
+    
+    const number = parseInt(chunk.toString(), 10);
+    const result = number * 10;
+    console.log(`Number: ${number}, Multiplied by 10: ${result}`);
+    callback(); // Signal that the write is complete
+  }
+}
+
+class InverseNumberStream extends Transform {
+  _transform(chunk, encoding, callback) {
+    const transformedNumber = -parseInt(chunk.toString(), 10);
+    callback(null, Buffer.from(String(transformedNumber)));
+  }
+}
+
+
+new OneToHundred()
+  .pipe(new InverseNumberStream()) // Transform the numbers to their inverses
+  .pipe(new MultiplyByTenStream()); // Pipe the readable stream to standard output
