@@ -5,7 +5,7 @@
 
 import { Readable, Writable, Transform } from 'node:stream';
 
-class OneToHundred extends Readable {
+class OneToHundredStream extends Readable {
   index = 1;
 
   _read() {
@@ -41,6 +41,6 @@ class InverseNumberStream extends Transform {
 }
 
 
-new OneToHundred()
+new OneToHundredStream()
   .pipe(new InverseNumberStream()) // Transform the numbers to their inverses
   .pipe(new MultiplyByTenStream()); // Pipe the readable stream to standard output
