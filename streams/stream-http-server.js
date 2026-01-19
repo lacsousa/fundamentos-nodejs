@@ -18,7 +18,7 @@ class InverseNumberStream extends Transform {
 const server = http.createServer((req, res) => {
     return req
         .pipe(new InverseNumberStream()) // Transform the numbers to their inverses
-        .pipe(res); // Pipe the readable stream to the response
+        .pipe(res); // Pipe the readable stream to the response and redirect the output
 });
 
 server.listen(3334);

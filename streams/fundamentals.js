@@ -24,7 +24,7 @@ class OneToHundredStream extends Readable {
 }
 
 class MultiplyByTenStream extends Writable {
-  _write(chunk, encoding, callback) {
+  _write(chunk, encoding, callback) { // in this case this stream only process data
     
     const number = parseInt(chunk.toString(), 10);
     const result = number * 10;

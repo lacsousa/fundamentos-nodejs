@@ -15,11 +15,11 @@ class OneToHundredStream extends Readable {
         const buf = Buffer.from(String(i));
         this.push(buf); // Push the current number as a buffer
       }
-    }, 100); // Delay of 1s
+    }, 500); // Delay of 0.5s
   }
 }
 
-fetch('http://localhost:3334', {
+fetch('http://localhost:3334', { // Fetch API is built-in in Node.js v18+ and works similar to the browser to call HTTP endpoints in another application
   method: 'POST',
   body: new OneToHundredStream(),
   duplex: 'half'
