@@ -3,6 +3,7 @@
 
 import http from 'node:http';
 import { json } from './middlewares/json.js';
+import { routes } from './routes.js';
 
 // GET, POST, PUT, PATCH, DELETE
 // HTTP methods
@@ -27,7 +28,11 @@ Redirection messages (300 – 399)
 Client error responses (400 – 499)
 Server error responses (500 – 599)
 */
-const users = [];
+
+// UUID - Universally Unique Identifier
+
+//const users = [];
+
 
 const server = http.createServer(async (req, res) => {
   
@@ -38,37 +43,14 @@ const server = http.createServer(async (req, res) => {
   console.log(req.body);
   console.log(method, url);
 
-  if (method === "GET" && url === "/users") {
-    // Early return to avoid unnecessary processing
-    return res
-      .end(JSON.stringify(users));
-   
-  }
+  const route = routes.find(route => {
+    return route.method === method && route.path === url;
+  });
 
-  if (method === "POST" && url === "/users") {
-
-    const { name, email } = req.body;
-
-    users.push({ id: 1, 
-      name,
-      email
-    });
-
-    return res.writeHead(201).end("User created successfully");
-  }
-
-  if (method === "PUT" && url === "/users/1") {
-    return res.end("Update user 1");
-  }
-   
-  if (method === "PATCH" && url === "/users/1") {
-        return res.end("Partial update user 1");
- }
-
-  if (method === "DELETE" && url === "/users/1") {
-    return res.end("Delete user 1");
-  }
-
+  if (route) {
+    return route.handler(req, res);
+  }  
+  
   return res.writeHead(404).end("Not Found");
 });
 

@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "id": "899788d5-c554-4db8-b3d4-2e74bfbb68ff",
+      "name": "Lìris",
+      "email": "liris@teste.com"
+    },
+    {
+      "id": "1be77c07-3064-4fa2-a860-216981386186",
+      "name": "Karinne",
+      "email": "karinne@teste.com"
+    }
+  ]
+}
