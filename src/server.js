@@ -1,7 +1,8 @@
 // const http = require('http');
 // CommonJS -> require, but today we use ES6 import
 
-import http from "node:http";
+import http from 'node:http';
+import { json } from './middlewares/json.js';
 
 // GET, POST, PUT, PATCH, DELETE
 // HTTP methods
@@ -31,27 +32,16 @@ const users = [];
 const server = http.createServer(async (req, res) => {
   
   const { method, url } = req;
-  const buffers = [];
   
-  for await (const chunk of req) {
-    buffers.push(chunk);
-  }
-  
-  try {
-    req.body = JSON.parse(Buffer.concat(buffers).toString());
+  await json(req, res); // Middleware to parse JSON body
 
-    console.log('Full stream content:', req.body);
-
-  } catch (error) {
-    req.body = {};
-  }
+  console.log(req.body);
   console.log(method, url);
 
   if (method === "GET" && url === "/users") {
     // Early return to avoid unnecessary processing
     return res
-    .setHeader("Content-Type", "application/json")
-    .end(JSON.stringify(users));
+      .end(JSON.stringify(users));
    
   }
 
