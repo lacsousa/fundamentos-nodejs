@@ -19,8 +19,8 @@ const server = http.createServer(async (req, res) => {
 
   const buffers = [];
   
-  for  await (const cunk of req) {
-    buffers.push(cunk);
+  for  await (const chunk of req) {
+    buffers.push(chunk);
   } // for await is very useful to read data from a stream asynchronously
     // Nothing more than reading all data from a stream until it ends
   

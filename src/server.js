@@ -28,10 +28,23 @@ Server error responses (500 – 599)
 */
 const users = [];
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(async (req, res) => {
   
   const { method, url } = req;
+  const buffers = [];
+  
+  for await (const chunk of req) {
+    buffers.push(chunk);
+  }
+  
+  try {
+    req.body = JSON.parse(Buffer.concat(buffers).toString());
 
+    console.log('Full stream content:', req.body);
+
+  } catch (error) {
+    req.body = {};
+  }
   console.log(method, url);
 
   if (method === "GET" && url === "/users") {
@@ -43,9 +56,12 @@ const server = http.createServer((req, res) => {
   }
 
   if (method === "POST" && url === "/users") {
+
+    const { name, email } = req.body;
+
     users.push({ id: 1, 
-      name: 'John Doe',
-      email: 'johndoe@gmail.com'
+      name,
+      email
     });
 
     return res.writeHead(201).end("User created successfully");
