@@ -1,3 +1,4 @@
+import { table } from 'node:console';
 import fs from 'node:fs/promises';
 
 const databasePath = new URL('../db.json', import.meta.url);
@@ -31,6 +32,15 @@ export class Database {
         this.#database[table].push(data);
         await this.#persist();
         return data;
+    }
+
+    delete(table, id){
+        const rowIndex = this.#database[table].findIndex(row => row.id === id);
+
+        if (rowIndex > -1){
+            this.#database[table].splice(rowIndex, 1);
+            this.#persist;
+        }
     }
 
     select(table) {
