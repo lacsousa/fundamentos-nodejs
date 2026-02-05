@@ -19,6 +19,16 @@
       "id": "11f87e31-0f4e-416b-9938-4cbd881dbe20",
       "name": "Lívian",
       "email": "livian@teste.com"
+    },
+    {
+      "id": "d5d41962-cc22-41f9-83d6-7170e2626c01",
+      "name": "Luciano",
+      "email": "lacs@teste.com"
+    },
+    {
+      "id": "055d9f17-9510-4362-8daf-f2ccbc88e76d",
+      "name": "Luciano Cordeiro",
+      "email": "lacs@teste.com"
     }
   ]
 }
