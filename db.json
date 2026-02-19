@@ -11,11 +11,6 @@
       "email": "karinne@teste.com"
     },
     {
-      "id": "93859452-922c-4179-b769-fc28c52e423e",
-      "name": "Lívian",
-      "email": "livian@teste.com"
-    },
-    {
       "id": "11f87e31-0f4e-416b-9938-4cbd881dbe20",
       "name": "Lívian",
       "email": "livian@teste.com"
@@ -29,6 +24,16 @@
       "id": "055d9f17-9510-4362-8daf-f2ccbc88e76d",
       "name": "Luciano Cordeiro",
       "email": "lacs@teste.com"
+    },
+    {
+      "id": "8ebb7765-2ace-4624-aaa7-0c85f523b84e",
+      "name": "Marina",
+      "email": "marina@teste.com"
+    },
+    {
+      "id": "a0900f86-7c5f-4c6f-8f32-90521e66489b",
+      "name": "Laís",
+      "email": "lais@teste.com"
     }
   ]
 }
