@@ -19,3 +19,9 @@ So, we need install the Typescript like a development dependency
 *** To solve some problems typescript with NodeJS
 
     npm install -D @types/node
+
+*** Install TSX for processing typescript and don't create a new file JS
+
+    npm install tsx -D 
+
+    
