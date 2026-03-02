@@ -24,4 +24,4 @@ So, we need install the Typescript like a development dependency
 
     npm install tsx -D 
 
-    
+    npm i fastify
