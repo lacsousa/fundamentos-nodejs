@@ -1,5 +1,5 @@
-import fastify from "fastify";
-import { db } from "./database.js";
+import fastify from 'fastify'
+import { db } from './database.js'
 
 const app = fastify();
 
