@@ -35,6 +35,11 @@ So, we need install the Typescript like a development dependency
 
     * After that you need ot install a VsCode extension ESLint 
 
+*** Using HTTPie
+
+     http localhost:3333/hello
+
+
 *** Configuring Knex.js ( Knex.js SQL query builder)
 
     npm install knex sqlite3
@@ -43,4 +48,12 @@ So, we need install the Typescript like a development dependency
 
         npm run knex -- -h
         
-        npm run knex -- migrate:make create-documents
+        ------------------------------------------------------------
+        npm run knex -- migrate:make create-transactions
+
+        npm run knex -- migrate:latest
+        ------------------------------------------------------------
+        $ npm run knex -- migrate:make add-session-id-to-transactions
+
+        npm run knex -- migrate:latest
+        ------------------------------------------------------------
